@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Engineering & Testing Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body>
+    <!-- Developer Welcome Popup -->
+    <div class="popup-overlay" id="welcomePopup">
+        <div class="popup-content">
+            <button class="popup-close" id="closePopup">&times;</button>
+            <div class="popup-header">
+                <div class="popup-icon">👨‍💻</div>
+                <h2>Welcome to DataHub!</h2>
+            </div>
+            <div class="popup-body">
+                <p class="popup-greeting">Hi there! I'm <strong>Akash Rathod</strong></p>
+                <p class="popup-description">
+                    Thank you for visiting this comprehensive resource for Data Engineering and Quality Assurance. 
+                    This platform is designed to help you master SQL, ETL processes, data warehousing, and testing methodologies.
+                </p>
+                <div class="popup-social">
+                    <p>Connect with me:</p>
+                    <div class="popup-social-links">
+                        <a href="https://github.com/akashvr09" target="_blank" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/iamakashvr/" target="_blank" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/iamakashvr" target="_blank" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/akash.vr_/#" target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:imailakashvr@gmail.com" aria-label="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="popup-timer">
+                    <p>This popup will close in <span id="countdown">10</span> seconds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Data Engineering & Testing Hub</span>
+            </div>
+            <div class="nav-links-header">
+                <a href="#self">Self</a>
+                <a href="#dwh">DWH</a>
+                <a href="#sql">SQL</a>
+                <a href="#etl">ETL</a>
+                <a href="#transformations">Transformations</a>
+                <a href="#differences">Differences</a>
+                <a href="#manual">Manual Testing</a>
+                <a href="#projects">Projects</a>
+                <a href="#external">External Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Complete Guide to</span>
+                    <span class="title-line gradient-text">ETL Testing</span>
+                    <span class="title-line">& Data Engineering</span>
+                </h1>
+                <p class="hero-description">
+                    Master SQL, ETL processes, data warehousing, and comprehensive testing methodologies. 
+                    Your complete resource for becoming a data and QA professional.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Sections -->
+        <div class="content-wrapper">
+            <!-- SELF Section -->
+            <section id="self" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Personal</span>
+                    <h2>SELF</h2>
+                    <p>Introduction and personal resources</p>
+                </div>
+                <div class="content-grid">
+                    <a href="Self_intro.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Introduction</h3>
+                            <p>Self introduction and background</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Project architecture.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Project Architecture</h3>
+                            <p>Understanding project architecture and design</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="bug life cycle.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Bug Life Cycle</h3>
+                            <p>Complete bug life cycle documentation</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="SCD2 Type.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>SCD Type 2</h3>
+                            <p>Slowly Changing Dimension Type 2 explained</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1BzryQBxQuH120WUc1G7j-LZYzZjJ2qLZ/view?pli=1" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Resume</h3>
+                            <p>Professional resume and credentials</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- DWH Section -->
+            <section id="dwh" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Architecture</span>
+                    <h2>Data Warehouse (DWH)</h2>
+                    <p>Data warehouse concepts and implementation</p>
+                </div>
+                <div class="content-grid">
+                    <a href="Data Warehouse.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Data Warehouse</h3>
+                            <p>Fundamentals of data warehousing</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Normalization.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Normalization</h3>
+                            <p>Database normalization techniques</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Dimension Table and Fact table.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Dimension & Fact Table</h3>
+                            <p>Understanding dimensional modeling</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Schema.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Schema</h3>
+                            <p>Star and snowflake schema designs</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Challenges in DWH.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Challenges in DWH</h3>
+                            <p>Common data warehouse challenges</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- SQL Section -->
+            <section id="sql" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Database</span>
+                    <h2>SQL</h2>
+                    <p>Comprehensive SQL concepts and operations</p>
+                </div>
+                <div class="content-grid">
+                    <a href="SQL DDL.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>SQL DDL</h3>
+                            <p>Data Definition Language commands</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="DML.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>DML</h3>
+                            <p>Data Manipulation Language operations</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="NULL FUNCTIONS.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>NULL Functions</h3>
+                            <p>Handling NULL values in SQL</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="excution & compilation &logical Operators.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Execution & Compilation & Logical Operators</h3>
+                            <p>SQL execution order and operators</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="SET OPERATORS.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>SET Operators</h3>
+                            <p>UNION, INTERSECT, EXCEPT operations</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="AGGREGATE FUNCTIONS.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Aggregate Functions</h3>
+                            <p>SUM, AVG, COUNT, MIN, MAX functions</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Analytical Function or Windows Functions.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Analytical Functions / Window Functions</h3>
+                            <p>Advanced window functions and analytics</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Join.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Joins</h3>
+                            <p>INNER, LEFT, RIGHT, FULL OUTER joins</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="Constraints & like operators.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Constraints & LIKE Operators</h3>
+                            <p>Database constraints and pattern matching</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Sub Query.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Sub Query</h3>
+                            <p>Nested queries and subquery techniques</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ETL Section -->
+            <section id="etl" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Pipeline</span>
+                    <h2>ETL</h2>
+                    <p>Extract, Transform, Load processes and testing</p>
+                </div>
+                <div class="content-grid">
+                    <a href="ETL Intro.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>ETL Intro</h3>
+                            <p>Introduction to ETL processes</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/workflow & monitor.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Informatica Workflow and Monitor</h3>
+                            <p>Workflow management and monitoring</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Data completeness test.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Data Completeness Test</h3>
+                            <p>Ensuring data completeness in ETL</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/STM document.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>STM Document</h3>
+                            <p>Source to Target Mapping documentation</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/rules to create testcase.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Rules for Test Case</h3>
+                            <p>Best practices for creating test cases</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Data transformation Test.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Data Transformation Test</h3>
+                            <p>Data cleaning, merging, scrubbing, aggregation</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/test scenario for initial and incremental.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Test Scenario for Initial and Incremental Load</h3>
+                            <p>Testing initial and incremental data loads</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/checking duplicate in target table.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Checking Duplicate in Target Table</h3>
+                            <p>Duplicate detection and handling</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/source and record count.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Source & Record Count</h3>
+                            <p>Validating source and target record counts</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Transformations Section -->
+            <section id="transformations" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Processing</span>
+                    <h2>Transformations</h2>
+                    <p>Informatica transformations and data processing</p>
+                </div>
+                <div class="content-grid">
+                    <a href="ETL/aggregator tansformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Aggregator Transformation</h3>
+                            <p>Data aggregation and grouping</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/filter Transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Filter Transformation</h3>
+                            <p>Filtering data based on conditions</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/expression transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Expression Transformation</h3>
+                            <p>Calculating and transforming data</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Router Transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Router Transformation</h3>
+                            <p>Routing data to multiple targets</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/active and passive transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Active & Passive Transformation</h3>
+                            <p>Understanding transformation types</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/sorter transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Sorter Transformation</h3>
+                            <p>Sorting data in ETL pipelines</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/joiner transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Joiner Transformation</h3>
+                            <p>Joining data from multiple sources</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/lookup transformation.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Lookup Transformation</h3>
+                            <p>Looking up reference data</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Differences & Views & TOAD & Index Section -->
+            <section id="differences" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Concepts</span>
+                    <h2>Differences & Views & TOAD & Index</h2>
+                    <p>Database concepts and tools</p>
+                </div>
+                <div class="content-grid">
+                    <a href="all differences.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>All Differences</h3>
+                            <p>Key differences in database concepts</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Index.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Index</h3>
+                            <p>Database indexing strategies</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/view.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Views</h3>
+                            <p>Creating and using database views</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="ETL/Toad.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>TOAD</h3>
+                            <p>TOAD database management tool</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Manual Testing Section -->
+            <section id="manual" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">QA</span>
+                    <h2>Manual Testing</h2>
+                    <p>Software testing methodologies and practices</p>
+                </div>
+                <div class="content-grid">
+                    <a href="manual/Agile.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Agile</h3>
+                            <p>Agile methodology and practices</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="manual/Agile1.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Agile Sir Notes</h3>
+                            <p>Comprehensive Agile notes</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="manual/types of documents.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Types of Documents</h3>
+                            <p>Testing documentation types</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="manual/levels of testing.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Levels of Testing</h3>
+                            <p>Unit, integration, system, acceptance testing</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="manual/STLC.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>STLC</h3>
+                            <p>Software Testing Life Cycle</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="manual/test methodology.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Test Methodology & Traceability Matrix</h3>
+                            <p>Testing approaches and RTM</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="manual/priority and severity.png" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Priority & Severity</h3>
+                            <p>Bug classification criteria</p>
+                            <span class="card-link">View Image →</span>
+                        </div>
+                    </a>
+                    <a href="manual/STLC Test Plan.png" class="content-card-link">
+                        <div class="content-card">
+                            <h3>STLC Test Plan</h3>
+                            <p>Test plan template and structure</p>
+                            <span class="card-link">View Image →</span>
+                        </div>
+                    </a>
+                    <a href="manual/test case template.png" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>Test Case Template</h3>
+                            <p>Standard test case format</p>
+                            <span class="card-link">View Image →</span>
+                        </div>
+                    </a>
+                    <a href="manual/RTM.png" class="content-card-link">
+                        <div class="content-card">
+                            <h3>RTM Document</h3>
+                            <p>Requirements Traceability Matrix</p>
+                            <span class="card-link">View Image →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Projects</span>
+                    <h2>Query and ETL Project</h2>
+                    <p>Practical projects and implementations</p>
+                </div>
+                <div class="content-grid">
+                    <a href="QUERY/query.pdf" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Query</h3>
+                            <p>SQL query examples and practice</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                    <a href="project/ETL project.pdf" class="content-card-link">
+                        <div class="content-card highlight-card">
+                            <h3>ETL Project</h3>
+                            <p>Complete ETL project implementation</p>
+                            <span class="card-link">View PDF →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- External Resources Section -->
+            <section id="external" class="content-section">
+                <div class="section-header">
+                    <span class="section-badge">Resources</span>
+                    <h2>External Resources</h2>
+                    <p>Additional learning materials and tools</p>
+                </div>
+                <div class="content-grid">
+                    <a href="https://www.guru99.com/hp-alm-dashboard.html" target="_blank" class="content-card-link">
+                        <div class="content-card">
+                            <h3>HPALM Dashboard</h3>
+                            <p>HP Application Lifecycle Management</p>
+                            <span class="card-link">Visit Site →</span>
+                        </div>
+                    </a>
+                    <a href="https://www.guru99.com/jira-interview-questions.html" target="_blank" class="content-card-link">
+                        <div class="content-card">
+                            <h3>JIRA</h3>
+                            <p>JIRA interview questions and guide</p>
+                            <span class="card-link">Visit Site →</span>
+                        </div>
+                    </a>
+                    <a href="https://www.tutorialspoint.com/etl_testing/etl_testing_challenges.htm#" target="_blank" class="content-card-link">
+                        <div class="content-card">
+                            <h3>ETL Challenges Faced</h3>
+                            <p>Common ETL testing challenges</p>
+                            <span class="card-link">Visit Site →</span>
+                        </div>
+                    </a>
+                    <a href="https://www.pavantestingtools.com/2014/08/types-of-etl-bugs.html" target="_blank" class="content-card-link">
+                        <div class="content-card">
+                            <h3>Types of Bugs in ETL</h3>
+                            <p>ETL bug classification and examples</p>
+                            <span class="card-link">Visit Site →</span>
+                        </div>
+                    </a>
+                    <a href="manual/JIRA BOARD.webp" class="content-card-link">
+                        <div class="content-card">
+                            <h3>JIRA Board</h3>
+                            <p>JIRA board visualization</p>
+                            <span class="card-link">View Image →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Data Engineering & Testing Hub</span>
+                    </div>
+                    <p class="footer-description">Your comprehensive resource for Data Engineering and Quality Assurance excellence. Master ETL, SQL, and testing methodologies.</p>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Database & ETL</h4>
+                        <ul>
+                            <li><a href="#sql">SQL Fundamentals</a></li>
+                            <li><a href="#dwh">Data Warehouse</a></li>
+                            <li><a href="#etl">ETL Processes</a></li>
+                            <li><a href="#transformations">Transformations</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Testing & QA</h4>
+                        <ul>
+                            <li><a href="#manual">Manual Testing</a></li>
+                            <li><a href="manual/Agile.pdf">Agile Methodology</a></li>
+                            <li><a href="manual/STLC.pdf">STLC</a></li>
+                            <li><a href="manual/test case template.png">Test Cases</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#external">External Links</a></li>
+                            <li><a href="project/NIKHIL CV.pdf">Resume</a></li>
+                            <li><a href="#self">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <h4>Connect with Developer</h4>
+                    <div class="social-icons">
+                        <a href="https://github.com/akashvr09" target="_blank" class="social-icon" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/iamakashvr/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/iamakashvr" target="_blank" class="social-icon" aria-label="X (Twitter)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/akash.vr_/#" target="_blank" class="social-icon" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:imailakashvr@gmail.com" class="social-icon" aria-label="Email">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-credit">
+                    <p>Developed with love &#x2661; by <a href="https://akashvr.rf.gd/" target="_blank" id="developerName" class="developer-link">Akash Rathod</a></p>
+                    <p class="copyright">&copy; Akash Rathod. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
